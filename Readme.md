@@ -43,3 +43,5 @@ $ kubectl run -n debezium-example -it --rm --image=mysql:8.0 --restart=Never --e
 Do some changes in the customers table:
 
 sql> update customers set first_name="Sally Marie" where id=1001;
+
+ji
