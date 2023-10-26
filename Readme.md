@@ -10,12 +10,11 @@ Change Data Capture, or CDC, is an older term for a system that monitors and cap
 
 **How to Setup debezium with mysql on Minikube**
 
-1. Start your minikube cluster 
+1. Start your minikube cluster
 
 ```
 minikube start
 ```
-
 
 2. Create a new Namespace for your debezium example setup .
 
