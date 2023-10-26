@@ -9,24 +9,36 @@ Debezium is essentially a modern, distributed open source change data capture pl
 ![alt text]([https://github.com/Lord-of-the-Pods/debezium-minikube/blob/main/images/debezium-architecture.png](https://github.com/Lord-of-the-Pods/debezium-minikube/blob/fb52c1de8eac288c5cd51da56f0da0d1de3afc93/images/debezium-architecture.png)?raw=true)
 
 
-1. minikube start
+1. Start your minikube cluster
 
-2. kubectl create ns debezium-example
+```
+minikube start
+```
+
+2. Create a new Namespace for your debezium example setup .
+
+```
+kubectl create ns debezium-example
+```
 
 3. Deploying Strimzi Operator
-   As mentioned above, for the Debezium deployment we will use Strimzi, which manages the Kafka deployment on Kubernetes. Please see the Strimzi deployment documentation for more details on how to deploy Strimzi on your Kubernetes cluster.
+   For the Debezium deployment we will use Strimzi, which manages the Kafka deployment on Kubernetes.
+   The simplest way for installing Strimzi is through the Operator Lifecycle Manager (OLM). 
+   If you don’t have OLM installed on your cluster yet, you can install it by running the following command: 
 
-The simplest way for installing Strimzi is through the Operator Lifecycle Manager (OLM). 
-  If you don’t have OLM installed on your cluster yet, you can install it by running the following command: 
+```  
 curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.20.0/install.sh | bash -s v0.20.0
+```
 
-Now, install Strimzi operator itself:
+   Now, install Strimzi operator itself:
 
+```
 $ kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
+```
 
 4. Next, deploy a (single-node) Kafka cluster:
   
-  https://github.com/Lord-of-the-Pods/debezium-minikube/blob/1e68a1118b1366ca6d5acb6e4182ab03a794e084/yamls/kafka.yaml#L1-L44
+https://github.com/Lord-of-the-Pods/debezium-minikube/blob/1e68a1118b1366ca6d5acb6e4182ab03a794e084/yamls/kafka.yaml#L1-L44
 
 5. Deploying a Data Source
    As a data source, MySQL will be used in the following. Besides running a pod with MySQL, 
@@ -43,11 +55,11 @@ $ kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
 
 6. Kafka Connect
 
-   https://github.com/Lord-of-the-Pods/debezium-minikube/blob/636ae6f5c7e26c87b6e39c0fc608e0c08daea394/yamls/KafkaConnect.yaml#L1-L31
+https://github.com/Lord-of-the-Pods/debezium-minikube/blob/636ae6f5c7e26c87b6e39c0fc608e0c08daea394/yamls/KafkaConnect.yaml#L1-L31
 
 7. Kafka Connector :
 
-   https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/KafkaConnector.yaml#L1-L20
+https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/KafkaConnector.yaml#L1-L20
 
 8. Verifying the Deployment
   8.1. To verify the everything works fine, you can e.g. start watching mysql.inventory.customers Kafka topic:
