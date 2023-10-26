@@ -30,16 +30,27 @@ $ kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
 5. Deploying a Data Source
    As a data source, MySQL will be used in the following. Besides running a pod with MySQL, 
    an appropriate service which will point to the pod with DB itself is needed. It can be created e.g. as follows:
-  /yamls/mysql/
 
-6. Verifying the Deployment
+   5.1. Create a Mysql Deployment :
+   
+      https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/mysql/deployment.yaml#L1-L28
+
+   5.2. Create a Service for MySql
+
+      https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/mysql/service.yaml#L1-L10
+
+
+7. Verifying the Deployment
    To verify the everything works fine, you can e.g. start watching mysql.inventory.customers Kafka topic:
 
 
-
-7. Kafka Connect
+8. Kafka Connect
 
    https://github.com/Lord-of-the-Pods/debezium-minikube/blob/636ae6f5c7e26c87b6e39c0fc608e0c08daea394/yamls/KafkaConnect.yaml#L1-L31
+
+9. Kafka Connector :
+
+   https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/KafkaConnector.yaml#L1-L20
 
 $ kubectl run -n debezium-example -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
 Connect to the MySQL database:
