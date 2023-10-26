@@ -41,25 +41,28 @@ $ kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
       https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/mysql/service.yaml#L1-L10
 
 
-7. Verifying the Deployment
-   To verify the everything works fine, you can e.g. start watching mysql.inventory.customers Kafka topic:
-
-
-8. Kafka Connect
+6. Kafka Connect
 
    https://github.com/Lord-of-the-Pods/debezium-minikube/blob/636ae6f5c7e26c87b6e39c0fc608e0c08daea394/yamls/KafkaConnect.yaml#L1-L31
 
-9. Kafka Connector :
+7. Kafka Connector :
 
    https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/KafkaConnector.yaml#L1-L20
 
+8. Verifying the Deployment
+  8.1. To verify the everything works fine, you can e.g. start watching mysql.inventory.customers Kafka topic:
+
+```
 $ kubectl run -n debezium-example -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
-Connect to the MySQL database:
+```
 
-7. push changes to mysql database
+  8.2. Connect to the MySQL database:
+
+```
 $ kubectl run -n debezium-example -it --rm --image=mysql:8.0 --restart=Never --env MYSQL_ROOT_PASSWORD=debezium mysqlterm -- mysql -hmysql -P3306 -uroot -pdebezium
-Do some changes in the customers table:
+```
 
+  Do some changes in the customers table:
+```
 sql> update customers set first_name="Sally Marie" where id=1001;
-
-ji
+```
