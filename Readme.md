@@ -6,7 +6,7 @@ Debezium is a set of distributed services that capture row-level changes in your
 
 Change Data Capture, or CDC, is an older term for a system that monitors and captures the changes in data so that other software can respond to those changes. Data warehouses often had built-in CDC support, since data warehouses need to stay up-to-date as the data changed in the upstream OLTP databases.
 
-![alt text]([https://github.com/Lord-of-the-Pods/debezium-minikube/blob/main/images/debezium-architecture.png](https://github.com/Lord-of-the-Pods/debezium-minikube/blob/fb52c1de8eac288c5cd51da56f0da0d1de3afc93/images/debezium-architecture.png)?raw=true)
+![](images/debezium-architecture.png)
 
 **How to Setup debezium with mysql on Minikube**
 
