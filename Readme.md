@@ -6,7 +6,7 @@ Change Data Capture, or CDC, is an older term for a system that monitors and cap
 
 Debezium is essentially a modern, distributed open source change data capture platform that will eventually support monitoring a variety of database systems.
 
-![alt text](https://github.com/Lord-of-the-Pods/debezium-minikube/blob/main/images/debezium-architecture.png?raw=true)
+![alt text]([https://github.com/Lord-of-the-Pods/debezium-minikube/blob/main/images/debezium-architecture.png](https://github.com/Lord-of-the-Pods/debezium-minikube/blob/fb52c1de8eac288c5cd51da56f0da0d1de3afc93/images/debezium-architecture.png)?raw=true)
 
 
 1. minikube start
