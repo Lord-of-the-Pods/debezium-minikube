@@ -56,8 +56,18 @@ https://github.com/Lord-of-the-Pods/debezium-minikube/blob/1e68a1118b1366ca6d5ac
 
       https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/mysql/service.yaml#L1-L10
 
+6. Create a secret with mysql credetials : 
 
-6. Kafka Connect :
+   https://github.com/Lord-of-the-Pods/debezium-minikube/blob/96c6fc875570bb918b6438959efe294e7319eafd/yamls/debezium-secret.yaml#L1-L9
+
+6. Create a Role and role binding for debezium to access the Mysql database . 
+
+   https://github.com/Lord-of-the-Pods/debezium-minikube/blob/96c6fc875570bb918b6438959efe294e7319eafd/yamls/debezium-role.yaml#L1-L10
+
+   https://github.com/Lord-of-the-Pods/debezium-minikube/blob/96c6fc875570bb918b6438959efe294e7319eafd/yamls/debezium-rolebinding.yaml#L1-L13
+
+
+8. Kafka Connect :
 
    We will use Strimzi for creating the Kafka Connect cluster. Strimzi also can be used for building and pushing the required container image for us. Both tasks can be merged together and instructions for building the container image can be provided directly within the KafkaConnect object specification:
 
@@ -75,18 +85,18 @@ docker.io/abhishekkvvishnoi/debezium-connect-mysql:latest
 ```
 
 
-7. Kafka Connector :
+8. Kafka Connector :
 
 https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/KafkaConnector.yaml#L1-L20
 
-8. Verifying the Deployment
-  8.1. To verify the everything works fine, you can e.g. start watching mysql.inventory.customers Kafka topic:
+9. Verifying the Deployment
+  9.1. To verify the everything works fine, you can e.g. start watching mysql.inventory.customers Kafka topic:
 
 ```
 $ kubectl run -n debezium-example -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
 ```
 
-  8.2. Connect to the MySQL database:
+  9.2. Connect to the MySQL database:
 
 ```
 $ kubectl run -n debezium-example -it --rm --image=mysql:8.0 --restart=Never --env MYSQL_ROOT_PASSWORD=debezium mysqlterm -- mysql -hmysql -P3306 -uroot -pdebezium
