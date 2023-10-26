@@ -41,6 +41,8 @@ $ kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
    
    [https://github.com/Lord-of-the-Pods/debezium-minikube/blob/main/yamls/KafkaConnect.yaml](https://github.com/Lord-of-the-Pods/debezium-minikube/blob/45160bb6eb7ffad942e5634088fdd0a04b46ce36/yamls/KafkaConnect.yaml#L1-31)
 
+   https://github.com/Lord-of-the-Pods/debezium-minikube/blob/45160bb6eb7ffad942e5634088fdd0a04b46ce36/yamls/KafkaConnect.yaml#L1-31
+
 $ kubectl run -n debezium-example -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
 Connect to the MySQL database:
 
