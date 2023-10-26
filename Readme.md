@@ -42,8 +42,11 @@ $ kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
 https://github.com/Lord-of-the-Pods/debezium-minikube/blob/1e68a1118b1366ca6d5acb6e4182ab03a794e084/yamls/kafka.yaml#L1-L44
 
 5. Deploying a Data Source
+   
    As a data source, MySQL will be used in the following. Besides running a pod with MySQL, 
    an appropriate service which will point to the pod with DB itself is needed. It can be created e.g. as follows:
+
+   This mysql Database contains a default **inventory** databsae which can be used to run this example .
 
    5.1. Create a Mysql Deployment :
    
@@ -54,7 +57,11 @@ https://github.com/Lord-of-the-Pods/debezium-minikube/blob/1e68a1118b1366ca6d5ac
       https://github.com/Lord-of-the-Pods/debezium-minikube/blob/7ed3d3634bc14441307a19bab84be1b7a109ce77/yamls/mysql/service.yaml#L1-L10
 
 
-6. Kafka Connect
+6. Kafka Connect :
+
+   We will use Strimzi for creating the Kafka Connect cluster. Strimzi also can be used for building and pushing the required container image for us. Both tasks can be merged together and instructions for building the container image can be provided directly within the KafkaConnect object specification:
+
+   You can use a docker credential secret to push your mysql connector image to you docker hub public registry .
 
 https://github.com/Lord-of-the-Pods/debezium-minikube/blob/636ae6f5c7e26c87b6e39c0fc608e0c08daea394/yamls/KafkaConnect.yaml#L1-L31
 
