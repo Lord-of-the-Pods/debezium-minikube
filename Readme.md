@@ -35,6 +35,12 @@ $ kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
 6. Verifying the Deployment
    To verify the everything works fine, you can e.g. start watching mysql.inventory.customers Kafka topic:
 
+
+
+7. Kafka Connect
+   
+   https://github.com/Lord-of-the-Pods/debezium-minikube/blob/main/yamls/KafkaConnect.yaml#L1-L31
+
 $ kubectl run -n debezium-example -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
 Connect to the MySQL database:
 
