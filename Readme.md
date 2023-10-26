@@ -25,7 +25,8 @@ Now, install Strimzi operator itself:
 $ kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
 
 4. Next, deploy a (single-node) Kafka cluster:
-  /yamls/kafka.yaml
+  
+  https://github.com/Lord-of-the-Pods/debezium-minikube/blob/1e68a1118b1366ca6d5acb6e4182ab03a794e084/yamls/kafka.yaml#L1-L44
 
 5. Deploying a Data Source
    As a data source, MySQL will be used in the following. Besides running a pod with MySQL, 
