@@ -10,11 +10,12 @@ Change Data Capture, or CDC, is an older term for a system that monitors and cap
 
 **How to Setup debezium with mysql on Minikube**
 
-1. Start your minikube cluster
+1. Start your minikube cluster 
 
 ```
 minikube start
 ```
+
 
 2. Create a new Namespace for your debezium example setup .
 
@@ -64,6 +65,16 @@ https://github.com/Lord-of-the-Pods/debezium-minikube/blob/1e68a1118b1366ca6d5ac
    You can use a docker credential secret to push your mysql connector image to you docker hub public registry .
 
 https://github.com/Lord-of-the-Pods/debezium-minikube/blob/636ae6f5c7e26c87b6e39c0fc608e0c08daea394/yamls/KafkaConnect.yaml#L1-L31
+
+
+Note : you will also need a container registry where you will build your image via Strimzi KafkaConnect build task .
+The image is alos available in a public repo i already availble on docker hub here :
+
+```
+docker.io/abhishekkvvishnoi/debezium-connect-mysql:latest
+
+```
+
 
 7. Kafka Connector :
 
